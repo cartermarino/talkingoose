@@ -10,5 +10,28 @@
   <%= @topic.content %>
 </p>
 
+<p>
+  <strong>Upvotes:</strong>
+  <%= @topic.upvotes %>
+</p>
+
+<p>
+  <strong>Downvotes:</strong>
+  <%= @topic.downvotes %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @topic.user_id %>
+</p>
+
+<% @topic.comments.each do |comment| %>
+  <div class="comment">
+    <p>Content: <%= comment.content %></p>
+    <p>Votes: <%= comment.votes %></p>
+    <p>User Id: <%= comment.user.user_name %></p>
+  </div>
+<% end %>
+
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
 <%= link_to 'Back', topics_path %>

@@ -11,11 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150917224017) do
+ActiveRecord::Schema.define(version: 20150918121040) do
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "votes"
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "topics", force: :cascade do |t|
     t.string   "name"
     t.string   "content"
+    t.integer  "upvotes"
+    t.integer  "downvotes"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -24,9 +43,10 @@ ActiveRecord::Schema.define(version: 20150917224017) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "user_name"
-    t.string   "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end
